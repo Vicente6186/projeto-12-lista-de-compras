@@ -1,0 +1,63 @@
+@import url(global.css);
+@import url(utilities.css);
+
+
+body {
+    padding: 3.2rem;
+}
+
+#brand {
+    display: block;
+    margin-inline: auto;
+}
+
+main {
+    max-width: 62.7rem;
+    margin-inline: auto;
+    margin-top: 6.2rem;
+}
+
+h1 {
+    margin-block: 1.6rem 4.4rem;
+}
+
+#create-item {
+    display: flex;
+    gap: 1.6rem;
+    margin-bottom: 4rem;
+    
+    & input {
+        flex-grow: 1;
+    }
+}
+
+ul {
+    display: flex;
+    flex-direction: column;
+    gap: 1.2rem;
+    margin-bottom: 3.6rem;
+}
+
+li {
+    padding: .8rem 1.2rem;
+    display: flex;
+    align-items: center;
+    gap: 1.2rem;
+    background-color: var(--background-secondary);
+    border-radius: 1.2rem;
+
+    & span {
+       flex-grow: 1;
+    }
+
+    & img {
+        cursor: pointer;
+    }
+}
+
+
+@media (width < 1280px) {
+    #create-item {
+        flex-direction: column;
+    }
+}
