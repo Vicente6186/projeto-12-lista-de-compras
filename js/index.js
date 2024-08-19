@@ -4,38 +4,29 @@ const alertSuccess = document.querySelector('.alert-success')
 const alertDanger = document.querySelector('.alert-danger')
 
 
+// Listener que cria o item da lista quando o formulário é enviado
 form.addEventListener('submit', (event)=>{
     event.preventDefault()
-    createItem(form['new-item'].value)
-    form['new-item'].value = ''
+    createItem()
 })
 
-function createItem(value) {
-    const li = createLi(value)
+// Cria o item da lista e exibe o alerta de criado
+function createItem() {
+    const li = createLi(form['new-item'].value)
     ul.appendChild(li)
     ul.removeAttribute('hidden')
     showAlert('success')
+    form['new-item'].value = ''
 }
 
+// Remove o item da lista e exibe o alerta de deletado
 function deleteItem(event) {
     event.target.parentElement.remove()
     showAlert('danger')
     if(!ul.hasChildNodes()) ul.setAttribute('hidden', true)
 }
 
-function showAlert(type) {
-    switch(type){
-        case 'success':
-        alertDanger.setAttribute('hidden', true)
-        alertSuccess.removeAttribute('hidden')
-        break
-        case 'danger':
-        alertSuccess.setAttribute('hidden', true)
-        alertDanger.removeAttribute('hidden')
-        break
-    }
-}
-
+// Cria o item da lista
 function createLi(value) {
     const input = document.createElement('input')
     input.setAttribute('type', 'checkbox')
@@ -53,4 +44,18 @@ function createLi(value) {
     li.append(input, span, img)
 
     return li
+}
+
+// Exibe e oculta os alertas
+function showAlert(type) {
+    switch(type){
+        case 'success':
+        alertDanger.setAttribute('hidden', true)
+        alertSuccess.removeAttribute('hidden')
+        break
+        case 'danger':
+        alertSuccess.setAttribute('hidden', true)
+        alertDanger.removeAttribute('hidden')
+        break
+    }
 }
